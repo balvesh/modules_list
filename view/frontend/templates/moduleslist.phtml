@@ -1,0 +1,20 @@
+<?php
+/**
+ * @var $block \Learning\ModulesList\Block\ModulesList
+ */
+?>
+<?php
+try {
+    $om = \Magento\Framework\App\ObjectManager::getInstance();
+    $filesystem = $om->get('Magento\Framework\Filesystem');
+    $directoryList = $om->get('Magento\Framework\App\Filesystem\DirectoryList');
+	$messageManager = $om->get('Magento\Framework\Message\ManagerInterface');
+    $media = $filesystem->getDirectoryWrite($directoryList::MEDIA);
+    $contents = implode("\n",$block->getCustomModules());
+	$message = 'Your Modules List has been downloaded. File path- pub/media/learning/modules_list.txt';
+    $media->writeFile("learning/modules_list.txt",$contents);
+	$messageManager->addSuccess($message);
+    } catch(Exception $e) {
+        echo $e->getMessage();
+    }
+?>

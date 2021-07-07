@@ -1,0 +1,16 @@
+{
+    "name": "learning/module-moduleslist",
+    "description": "To get list of all third party modules on link baseUrl/modules/show/",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Learning\\ModulesList\\": ""
+        }
+    }
+}
