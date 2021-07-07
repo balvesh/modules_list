@@ -26,12 +26,11 @@ class ModulesList extends \Magento\Framework\View\Element\Template
         $modules = $this->moduleList->getNames();
         foreach ($modules as $_module) {
             $dir = $this->moduleReader->getModuleDir(null, $_module);
-            if(strpos($dir, 'app/code') !== false || strpos($this->getDefaultThridPartyModules(), $dir)!== false)
+            if(strpos($dir, 'app/code') !== false || strpos($this->getDefaultThridPartyModules(), basename(dirname($dir))) == false)
             {
                 $result[] = $_module;
             }
         }
-
         return $result;
     }
 
